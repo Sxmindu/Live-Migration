@@ -140,5 +140,5 @@
 
 ##
 
-- All the above mentioned scripts can be found in qemu-scripts folder.
+- All the above mentioned scripts can be found in `qemu-scripts` folder.
 
