@@ -1,4 +1,4 @@
-# Compiling Qemu and Setting-up VM
+# COMPILING QEMU & SETTING-UP VM
 
 ## Compiling Qemu
 
@@ -137,4 +137,8 @@
     ```
 
     - give the `disk_image_name` without `.img`
+
+##
+
+- All the above mentioned scripts can be found in qemu-scripts folder.
 
