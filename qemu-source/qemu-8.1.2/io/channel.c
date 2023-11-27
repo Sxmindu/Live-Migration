@@ -260,7 +260,6 @@ int coroutine_mixed_fn qio_channel_writev_full_all(QIOChannel *ioc,
 
     while (nlocal_iov > 0) {
         ssize_t len;
-
         len = qio_channel_writev_full(ioc, local_iov, nlocal_iov, fds,
                                             nfds, flags, errp);
 

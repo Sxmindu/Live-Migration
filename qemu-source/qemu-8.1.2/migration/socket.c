@@ -138,9 +138,9 @@ socket_start_outgoing_migration_internal(MigrationState *s,
 void socket_start_outgoing_migration(MigrationState *s,
                                      const char *str,
                                      Error **errp)
-{
+{	
     Error *err = NULL;
-    SocketAddress *saddr = socket_parse(str, &err);
+    SocketAddress *saddr = socket_parse(str, &err);    
     if (!err) {
         socket_start_outgoing_migration_internal(s, saddr, &err);
     }

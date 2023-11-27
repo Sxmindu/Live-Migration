@@ -1122,7 +1122,7 @@ SocketAddress *socket_parse(const char *str, Error **errp)
         if (inet_parse(&addr->u.inet, str + strlen("tcp:"), errp)) {
             goto fail;
         }
-    } else {
+    } else {	
         addr->type = SOCKET_ADDRESS_TYPE_INET;
         if (inet_parse(&addr->u.inet, str, errp)) {
             goto fail;

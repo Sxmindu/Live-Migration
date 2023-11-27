@@ -37,23 +37,23 @@
 #define MAX_IOV_SIZE MIN_CONST(IOV_MAX, 64)
 
 struct QEMUFile {
-    const QEMUFileHooks *hooks;
-    QIOChannel *ioc;
-    bool is_writable;
+	const QEMUFileHooks *hooks;
+	QIOChannel *ioc;
+	bool is_writable;
 
-    /* The sum of bytes transferred on the wire */
-    uint64_t total_transferred;
+	/* The sum of bytes transferred on the wire */
+	uint64_t total_transferred;
 
-    int buf_index;
-    int buf_size; /* 0 when writing */
-    uint8_t buf[IO_BUF_SIZE];
+	int buf_index;
+	int buf_size; /* 0 when writing */
+	uint8_t buf[IO_BUF_SIZE];
 
-    DECLARE_BITMAP(may_free, MAX_IOV_SIZE);
-    struct iovec iov[MAX_IOV_SIZE];
-    unsigned int iovcnt;
+	DECLARE_BITMAP(may_free, MAX_IOV_SIZE);
+	struct iovec iov[MAX_IOV_SIZE];
+	unsigned int iovcnt;
 
-    int last_error;
-    Error *last_error_obj;
+	int last_error;
+	Error *last_error_obj;
 };
 
 /*
@@ -65,52 +65,52 @@ struct QEMUFile {
  */
 int qemu_file_shutdown(QEMUFile *f)
 {
-    /*
-     * We must set qemufile error before the real shutdown(), otherwise
-     * there can be a race window where we thought IO all went though
-     * (because last_error==NULL) but actually IO has already stopped.
-     *
-     * If without correct ordering, the race can happen like this:
-     *
-     *      page receiver                     other thread
-     *      -------------                     ------------
-     *      qemu_get_buffer()
-     *                                        do shutdown()
-     *        returns 0 (buffer all zero)
-     *        (we didn't check this retcode)
-     *      try to detect IO error
-     *        last_error==NULL, IO okay
-     *      install ALL-ZERO page
-     *                                        set last_error
-     *      --> guest crash!
-     */
-    if (!f->last_error) {
-        qemu_file_set_error(f, -EIO);
-    }
+	/*
+	 * We must set qemufile error before the real shutdown(), otherwise
+	 * there can be a race window where we thought IO all went though
+	 * (because last_error==NULL) but actually IO has already stopped.
+	 *
+	 * If without correct ordering, the race can happen like this:
+	 *
+	 *      page receiver                     other thread
+	 *      -------------                     ------------
+	 *      qemu_get_buffer()
+	 *                                        do shutdown()
+	 *        returns 0 (buffer all zero)
+	 *        (we didn't check this retcode)
+	 *      try to detect IO error
+	 *        last_error==NULL, IO okay
+	 *      install ALL-ZERO page
+	 *                                        set last_error
+	 *      --> guest crash!
+	 */
+	if (!f->last_error) {
+		qemu_file_set_error(f, -EIO);
+	}
 
-    if (!qio_channel_has_feature(f->ioc,
-                                 QIO_CHANNEL_FEATURE_SHUTDOWN)) {
-        return -ENOSYS;
-    }
+	if (!qio_channel_has_feature(f->ioc,
+				QIO_CHANNEL_FEATURE_SHUTDOWN)) {
+		return -ENOSYS;
+	}
 
-    if (qio_channel_shutdown(f->ioc, QIO_CHANNEL_SHUTDOWN_BOTH, NULL) < 0) {
-        return -EIO;
-    }
+	if (qio_channel_shutdown(f->ioc, QIO_CHANNEL_SHUTDOWN_BOTH, NULL) < 0) {
+		return -EIO;
+	}
 
-    return 0;
+	return 0;
 }
 
 static QEMUFile *qemu_file_new_impl(QIOChannel *ioc, bool is_writable)
 {
-    QEMUFile *f;
+	QEMUFile *f;
 
-    f = g_new0(QEMUFile, 1);
+	f = g_new0(QEMUFile, 1);
 
-    object_ref(ioc);
-    f->ioc = ioc;
-    f->is_writable = is_writable;
+	object_ref(ioc);
+	f->ioc = ioc;
+	f->is_writable = is_writable;
 
-    return f;
+	return f;
 }
 
 /*
@@ -119,22 +119,22 @@ static QEMUFile *qemu_file_new_impl(QIOChannel *ioc, bool is_writable)
  */
 QEMUFile *qemu_file_get_return_path(QEMUFile *f)
 {
-    return qemu_file_new_impl(f->ioc, !f->is_writable);
+	return qemu_file_new_impl(f->ioc, !f->is_writable);
 }
 
 QEMUFile *qemu_file_new_output(QIOChannel *ioc)
 {
-    return qemu_file_new_impl(ioc, true);
+	return qemu_file_new_impl(ioc, true);
 }
 
 QEMUFile *qemu_file_new_input(QIOChannel *ioc)
 {
-    return qemu_file_new_impl(ioc, false);
+	return qemu_file_new_impl(ioc, false);
 }
 
 void qemu_file_set_hooks(QEMUFile *f, const QEMUFileHooks *hooks)
 {
-    f->hooks = hooks;
+	f->hooks = hooks;
 }
 
 /*
@@ -148,10 +148,10 @@ void qemu_file_set_hooks(QEMUFile *f, const QEMUFileHooks *hooks)
  */
 static int qemu_file_get_error_obj(QEMUFile *f, Error **errp)
 {
-    if (errp) {
-        *errp = f->last_error_obj ? error_copy(f->last_error_obj) : NULL;
-    }
-    return f->last_error;
+	if (errp) {
+		*errp = f->last_error_obj ? error_copy(f->last_error_obj) : NULL;
+	}
+	return f->last_error;
 }
 
 /*
@@ -164,21 +164,21 @@ static int qemu_file_get_error_obj(QEMUFile *f, Error **errp)
  */
 int qemu_file_get_error_obj_any(QEMUFile *f1, QEMUFile *f2, Error **errp)
 {
-    int ret = 0;
+	int ret = 0;
 
-    if (f1) {
-        ret = qemu_file_get_error_obj(f1, errp);
-        /* If there's already error detected, return */
-        if (ret) {
-            return ret;
-        }
-    }
+	if (f1) {
+		ret = qemu_file_get_error_obj(f1, errp);
+		/* If there's already error detected, return */
+		if (ret) {
+			return ret;
+		}
+	}
 
-    if (f2) {
-        ret = qemu_file_get_error_obj(f2, errp);
-    }
+	if (f2) {
+		ret = qemu_file_get_error_obj(f2, errp);
+	}
 
-    return ret;
+	return ret;
 }
 
 /*
@@ -186,12 +186,13 @@ int qemu_file_get_error_obj_any(QEMUFile *f1, QEMUFile *f2, Error **errp)
  */
 void qemu_file_set_error_obj(QEMUFile *f, int ret, Error *err)
 {
-    if (f->last_error == 0 && ret) {
-        f->last_error = ret;
-        error_propagate(&f->last_error_obj, err);
-    } else if (err) {
-        error_report_err(err);
-    }
+	printf("Function : %s\n",__func__);
+	if (f->last_error == 0 && ret) {
+		f->last_error = ret;
+		error_propagate(&f->last_error_obj, err);
+	} else if (err) {
+		error_report_err(err);
+	}
 }
 
 /*
@@ -203,7 +204,7 @@ void qemu_file_set_error_obj(QEMUFile *f, int ret, Error *err)
  */
 int qemu_file_get_error(QEMUFile *f)
 {
-    return qemu_file_get_error_obj(f, NULL);
+	return qemu_file_get_error_obj(f, NULL);
 }
 
 /*
@@ -211,47 +212,48 @@ int qemu_file_get_error(QEMUFile *f)
  */
 void qemu_file_set_error(QEMUFile *f, int ret)
 {
-    qemu_file_set_error_obj(f, ret, NULL);
+	printf("Function : %s\n",__func__);
+	qemu_file_set_error_obj(f, ret, NULL);
 }
 
 static bool qemu_file_is_writable(QEMUFile *f)
 {
-    return f->is_writable;
+	return f->is_writable;
 }
 
 static void qemu_iovec_release_ram(QEMUFile *f)
 {
-    struct iovec iov;
-    unsigned long idx;
+	struct iovec iov;
+	unsigned long idx;
 
-    /* Find and release all the contiguous memory ranges marked as may_free. */
-    idx = find_next_bit(f->may_free, f->iovcnt, 0);
-    if (idx >= f->iovcnt) {
-        return;
-    }
-    iov = f->iov[idx];
+	/* Find and release all the contiguous memory ranges marked as may_free. */
+	idx = find_next_bit(f->may_free, f->iovcnt, 0);
+	if (idx >= f->iovcnt) {
+		return;
+	}
+	iov = f->iov[idx];
 
-    /* The madvise() in the loop is called for iov within a continuous range and
-     * then reinitialize the iov. And in the end, madvise() is called for the
-     * last iov.
-     */
-    while ((idx = find_next_bit(f->may_free, f->iovcnt, idx + 1)) < f->iovcnt) {
-        /* check for adjacent buffer and coalesce them */
-        if (iov.iov_base + iov.iov_len == f->iov[idx].iov_base) {
-            iov.iov_len += f->iov[idx].iov_len;
-            continue;
-        }
-        if (qemu_madvise(iov.iov_base, iov.iov_len, QEMU_MADV_DONTNEED) < 0) {
-            error_report("migrate: madvise DONTNEED failed %p %zd: %s",
-                         iov.iov_base, iov.iov_len, strerror(errno));
-        }
-        iov = f->iov[idx];
-    }
-    if (qemu_madvise(iov.iov_base, iov.iov_len, QEMU_MADV_DONTNEED) < 0) {
-            error_report("migrate: madvise DONTNEED failed %p %zd: %s",
-                         iov.iov_base, iov.iov_len, strerror(errno));
-    }
-    memset(f->may_free, 0, sizeof(f->may_free));
+	/* The madvise() in the loop is called for iov within a continuous range and
+	 * then reinitialize the iov. And in the end, madvise() is called for the
+	 * last iov.
+	 */
+	while ((idx = find_next_bit(f->may_free, f->iovcnt, idx + 1)) < f->iovcnt) {
+		/* check for adjacent buffer and coalesce them */
+		if (iov.iov_base + iov.iov_len == f->iov[idx].iov_base) {
+			iov.iov_len += f->iov[idx].iov_len;
+			continue;
+		}
+		if (qemu_madvise(iov.iov_base, iov.iov_len, QEMU_MADV_DONTNEED) < 0) {
+			error_report("migrate: madvise DONTNEED failed %p %zd: %s",
+					iov.iov_base, iov.iov_len, strerror(errno));
+		}
+		iov = f->iov[idx];
+	}
+	if (qemu_madvise(iov.iov_base, iov.iov_len, QEMU_MADV_DONTNEED) < 0) {
+		error_report("migrate: madvise DONTNEED failed %p %zd: %s",
+				iov.iov_base, iov.iov_len, strerror(errno));
+	}
+	memset(f->may_free, 0, sizeof(f->may_free));
 }
 
 
@@ -263,86 +265,86 @@ static void qemu_iovec_release_ram(QEMUFile *f)
  */
 void qemu_fflush(QEMUFile *f)
 {
-    if (!qemu_file_is_writable(f)) {
-        return;
-    }
+	if (!qemu_file_is_writable(f)) {
+		return;
+	}
 
-    if (qemu_file_get_error(f)) {
-        return;
-    }
-    if (f->iovcnt > 0) {
-        Error *local_error = NULL;
-        if (qio_channel_writev_all(f->ioc,
-                                   f->iov, f->iovcnt,
-                                   &local_error) < 0) {
-            qemu_file_set_error_obj(f, -EIO, local_error);
-        } else {
-            uint64_t size = iov_size(f->iov, f->iovcnt);
-            f->total_transferred += size;
-        }
+	if (qemu_file_get_error(f)) {
+		return;
+	}
+	if (f->iovcnt > 0) {
+		Error *local_error = NULL;
+		if (qio_channel_writev_all(f->ioc,
+					f->iov, f->iovcnt,
+					&local_error) < 0) {
+			qemu_file_set_error_obj(f, -EIO, local_error);
+		} else {
+			uint64_t size = iov_size(f->iov, f->iovcnt);
+			f->total_transferred += size;
+		}
 
-        qemu_iovec_release_ram(f);
-    }
+		qemu_iovec_release_ram(f);
+	}
 
-    f->buf_index = 0;
-    f->iovcnt = 0;
+	f->buf_index = 0;
+	f->iovcnt = 0;
 }
 
 void ram_control_before_iterate(QEMUFile *f, uint64_t flags)
 {
-    int ret = 0;
+	int ret = 0;
 
-    if (f->hooks && f->hooks->before_ram_iterate) {
-        ret = f->hooks->before_ram_iterate(f, flags, NULL);
-        if (ret < 0) {
-            qemu_file_set_error(f, ret);
-        }
-    }
+	if (f->hooks && f->hooks->before_ram_iterate) {
+		ret = f->hooks->before_ram_iterate(f, flags, NULL);
+		if (ret < 0) {
+			qemu_file_set_error(f, ret);
+		}
+	}
 }
 
 void ram_control_after_iterate(QEMUFile *f, uint64_t flags)
 {
-    int ret = 0;
+	int ret = 0;
 
-    if (f->hooks && f->hooks->after_ram_iterate) {
-        ret = f->hooks->after_ram_iterate(f, flags, NULL);
-        if (ret < 0) {
-            qemu_file_set_error(f, ret);
-        }
-    }
+	if (f->hooks && f->hooks->after_ram_iterate) {
+		ret = f->hooks->after_ram_iterate(f, flags, NULL);
+		if (ret < 0) {
+			qemu_file_set_error(f, ret);
+		}
+	}
 }
 
 void ram_control_load_hook(QEMUFile *f, uint64_t flags, void *data)
 {
-    if (f->hooks && f->hooks->hook_ram_load) {
-        int ret = f->hooks->hook_ram_load(f, flags, data);
-        if (ret < 0) {
-            qemu_file_set_error(f, ret);
-        }
-    }
+	if (f->hooks && f->hooks->hook_ram_load) {
+		int ret = f->hooks->hook_ram_load(f, flags, data);
+		if (ret < 0) {
+			qemu_file_set_error(f, ret);
+		}
+	}
 }
 
 size_t ram_control_save_page(QEMUFile *f, ram_addr_t block_offset,
-                             ram_addr_t offset, size_t size,
-                             uint64_t *bytes_sent)
+		ram_addr_t offset, size_t size,
+		uint64_t *bytes_sent)
 {
-    if (f->hooks && f->hooks->save_page) {
-        int ret = f->hooks->save_page(f, block_offset,
-                                      offset, size, bytes_sent);
+	if (f->hooks && f->hooks->save_page) {
+		int ret = f->hooks->save_page(f, block_offset,
+				offset, size, bytes_sent);
 
-        if (ret != RAM_SAVE_CONTROL_DELAYED &&
-            ret != RAM_SAVE_CONTROL_NOT_SUPP) {
-            if (bytes_sent && *bytes_sent > 0) {
-                qemu_file_credit_transfer(f, *bytes_sent);
-            } else if (ret < 0) {
-                qemu_file_set_error(f, ret);
-            }
-        }
+		if (ret != RAM_SAVE_CONTROL_DELAYED &&
+				ret != RAM_SAVE_CONTROL_NOT_SUPP) {
+			if (bytes_sent && *bytes_sent > 0) {
+				qemu_file_credit_transfer(f, *bytes_sent);
+			} else if (ret < 0) {
+				qemu_file_set_error(f, ret);
+			}
+		}
 
-        return ret;
-    }
+		return ret;
+	}
 
-    return RAM_SAVE_CONTROL_NOT_SUPP;
+	return RAM_SAVE_CONTROL_NOT_SUPP;
 }
 
 /*
@@ -355,54 +357,54 @@ size_t ram_control_save_page(QEMUFile *f, ram_addr_t block_offset,
  */
 static ssize_t coroutine_mixed_fn qemu_fill_buffer(QEMUFile *f)
 {
-    int len;
-    int pending;
-    Error *local_error = NULL;
+	int len;
+	int pending;
+	Error *local_error = NULL;
 
-    assert(!qemu_file_is_writable(f));
+	assert(!qemu_file_is_writable(f));
 
-    pending = f->buf_size - f->buf_index;
-    if (pending > 0) {
-        memmove(f->buf, f->buf + f->buf_index, pending);
-    }
-    f->buf_index = 0;
-    f->buf_size = pending;
+	pending = f->buf_size - f->buf_index;
+	if (pending > 0) {
+		memmove(f->buf, f->buf + f->buf_index, pending);
+	}
+	f->buf_index = 0;
+	f->buf_size = pending;
 
-    if (qemu_file_get_error(f)) {
-        return 0;
-    }
+	if (qemu_file_get_error(f)) {
+		return 0;
+	}
 
-    do {
-        len = qio_channel_read(f->ioc,
-                               (char *)f->buf + pending,
-                               IO_BUF_SIZE - pending,
-                               &local_error);
-        if (len == QIO_CHANNEL_ERR_BLOCK) {
-            if (qemu_in_coroutine()) {
-                qio_channel_yield(f->ioc, G_IO_IN);
-            } else {
-                qio_channel_wait(f->ioc, G_IO_IN);
-            }
-        } else if (len < 0) {
-            len = -EIO;
-        }
-    } while (len == QIO_CHANNEL_ERR_BLOCK);
+	do {
+		len = qio_channel_read(f->ioc,
+				(char *)f->buf + pending,
+				IO_BUF_SIZE - pending,
+				&local_error);
+		if (len == QIO_CHANNEL_ERR_BLOCK) {
+			if (qemu_in_coroutine()) {
+				qio_channel_yield(f->ioc, G_IO_IN);
+			} else {
+				qio_channel_wait(f->ioc, G_IO_IN);
+			}
+		} else if (len < 0) {
+			len = -EIO;
+		}
+	} while (len == QIO_CHANNEL_ERR_BLOCK);
 
-    if (len > 0) {
-        f->buf_size += len;
-        f->total_transferred += len;
-    } else if (len == 0) {
-        qemu_file_set_error_obj(f, -EIO, local_error);
-    } else {
-        qemu_file_set_error_obj(f, len, local_error);
-    }
+	if (len > 0) {
+		f->buf_size += len;
+		f->total_transferred += len;
+	} else if (len == 0) {
+		qemu_file_set_error_obj(f, -EIO, local_error);
+	} else {
+		qemu_file_set_error_obj(f, len, local_error);
+	}
 
-    return len;
+	return len;
 }
 
 void qemu_file_credit_transfer(QEMUFile *f, size_t size)
 {
-    f->total_transferred += size;
+	f->total_transferred += size;
 }
 
 /** Closes the file
@@ -415,26 +417,26 @@ void qemu_file_credit_transfer(QEMUFile *f, size_t size)
  */
 int qemu_fclose(QEMUFile *f)
 {
-    int ret, ret2;
-    qemu_fflush(f);
-    ret = qemu_file_get_error(f);
+	int ret, ret2;
+	qemu_fflush(f);
+	ret = qemu_file_get_error(f);
 
-    ret2 = qio_channel_close(f->ioc, NULL);
-    if (ret >= 0) {
-        ret = ret2;
-    }
-    g_clear_pointer(&f->ioc, object_unref);
+	ret2 = qio_channel_close(f->ioc, NULL);
+	if (ret >= 0) {
+		ret = ret2;
+	}
+	g_clear_pointer(&f->ioc, object_unref);
 
-    /* If any error was spotted before closing, we should report it
-     * instead of the close() return value.
-     */
-    if (f->last_error) {
-        ret = f->last_error;
-    }
-    error_free(f->last_error_obj);
-    g_free(f);
-    trace_qemu_file_fclose();
-    return ret;
+	/* If any error was spotted before closing, we should report it
+	 * instead of the close() return value.
+	 */
+	if (f->last_error) {
+		ret = f->last_error;
+	}
+	error_free(f->last_error_obj);
+	g_free(f);
+	trace_qemu_file_fclose();
+	return ret;
 }
 
 /*
@@ -446,93 +448,93 @@ int qemu_fclose(QEMUFile *f)
  *
  */
 static int add_to_iovec(QEMUFile *f, const uint8_t *buf, size_t size,
-                        bool may_free)
+		bool may_free)
 {
-    /* check for adjacent buffer and coalesce them */
-    if (f->iovcnt > 0 && buf == f->iov[f->iovcnt - 1].iov_base +
-        f->iov[f->iovcnt - 1].iov_len &&
-        may_free == test_bit(f->iovcnt - 1, f->may_free))
-    {
-        f->iov[f->iovcnt - 1].iov_len += size;
-    } else {
-        if (f->iovcnt >= MAX_IOV_SIZE) {
-            /* Should only happen if a previous fflush failed */
-            assert(qemu_file_get_error(f) || !qemu_file_is_writable(f));
-            return 1;
-        }
-        if (may_free) {
-            set_bit(f->iovcnt, f->may_free);
-        }
-        f->iov[f->iovcnt].iov_base = (uint8_t *)buf;
-        f->iov[f->iovcnt++].iov_len = size;
-    }
+	/* check for adjacent buffer and coalesce them */
+	if (f->iovcnt > 0 && buf == f->iov[f->iovcnt - 1].iov_base +
+			f->iov[f->iovcnt - 1].iov_len &&
+			may_free == test_bit(f->iovcnt - 1, f->may_free))
+	{
+		f->iov[f->iovcnt - 1].iov_len += size;
+	} else {
+		if (f->iovcnt >= MAX_IOV_SIZE) {
+			/* Should only happen if a previous fflush failed */
+			assert(qemu_file_get_error(f) || !qemu_file_is_writable(f));
+			return 1;
+		}
+		if (may_free) {
+			set_bit(f->iovcnt, f->may_free);
+		}
+		f->iov[f->iovcnt].iov_base = (uint8_t *)buf;
+		f->iov[f->iovcnt++].iov_len = size;
+	}
 
-    if (f->iovcnt >= MAX_IOV_SIZE) {
-        qemu_fflush(f);
-        return 1;
-    }
+	if (f->iovcnt >= MAX_IOV_SIZE) {
+		qemu_fflush(f);
+		return 1;
+	}
 
-    return 0;
+	return 0;
 }
 
 static void add_buf_to_iovec(QEMUFile *f, size_t len)
 {
-    if (!add_to_iovec(f, f->buf + f->buf_index, len, false)) {
-        f->buf_index += len;
-        if (f->buf_index == IO_BUF_SIZE) {
-            qemu_fflush(f);
-        }
-    }
+	if (!add_to_iovec(f, f->buf + f->buf_index, len, false)) {
+		f->buf_index += len;
+		if (f->buf_index == IO_BUF_SIZE) {
+			qemu_fflush(f);
+		}
+	}
 }
 
 void qemu_put_buffer_async(QEMUFile *f, const uint8_t *buf, size_t size,
-                           bool may_free)
+		bool may_free)
 {
-    if (f->last_error) {
-        return;
-    }
+	if (f->last_error) {
+		return;
+	}
 
-    add_to_iovec(f, buf, size, may_free);
+	add_to_iovec(f, buf, size, may_free);
 }
 
 void qemu_put_buffer(QEMUFile *f, const uint8_t *buf, size_t size)
 {
-    size_t l;
+	size_t l;
 
-    if (f->last_error) {
-        return;
-    }
+	if (f->last_error) {
+		return;
+	}
 
-    while (size > 0) {
-        l = IO_BUF_SIZE - f->buf_index;
-        if (l > size) {
-            l = size;
-        }
-        memcpy(f->buf + f->buf_index, buf, l);
-        add_buf_to_iovec(f, l);
-        if (qemu_file_get_error(f)) {
-            break;
-        }
-        buf += l;
-        size -= l;
-    }
+	while (size > 0) {
+		l = IO_BUF_SIZE - f->buf_index;
+		if (l > size) {
+			l = size;
+		}
+		memcpy(f->buf + f->buf_index, buf, l);
+		add_buf_to_iovec(f, l);
+		if (qemu_file_get_error(f)) {
+			break;
+		}
+		buf += l;
+		size -= l;
+	}
 }
 
 void qemu_put_byte(QEMUFile *f, int v)
 {
-    if (f->last_error) {
-        return;
-    }
+	if (f->last_error) {
+		return;
+	}
 
-    f->buf[f->buf_index] = v;
-    add_buf_to_iovec(f, 1);
+	f->buf[f->buf_index] = v;
+	add_buf_to_iovec(f, 1);
 }
 
 void qemu_file_skip(QEMUFile *f, int size)
 {
-    if (f->buf_index + size <= f->buf_size) {
-        f->buf_index += size;
-    }
+	if (f->buf_index + size <= f->buf_size) {
+		f->buf_index += size;
+	}
 }
 
 /*
@@ -545,42 +547,42 @@ void qemu_file_skip(QEMUFile *f, int size)
  */
 size_t coroutine_mixed_fn qemu_peek_buffer(QEMUFile *f, uint8_t **buf, size_t size, size_t offset)
 {
-    ssize_t pending;
-    size_t index;
+	ssize_t pending;
+	size_t index;
 
-    assert(!qemu_file_is_writable(f));
-    assert(offset < IO_BUF_SIZE);
-    assert(size <= IO_BUF_SIZE - offset);
+	assert(!qemu_file_is_writable(f));
+	assert(offset < IO_BUF_SIZE);
+	assert(size <= IO_BUF_SIZE - offset);
 
-    /* The 1st byte to read from */
-    index = f->buf_index + offset;
-    /* The number of available bytes starting at index */
-    pending = f->buf_size - index;
+	/* The 1st byte to read from */
+	index = f->buf_index + offset;
+	/* The number of available bytes starting at index */
+	pending = f->buf_size - index;
 
-    /*
-     * qemu_fill_buffer might return just a few bytes, even when there isn't
-     * an error, so loop collecting them until we get enough.
-     */
-    while (pending < size) {
-        int received = qemu_fill_buffer(f);
+	/*
+	 * qemu_fill_buffer might return just a few bytes, even when there isn't
+	 * an error, so loop collecting them until we get enough.
+	 */
+	while (pending < size) {
+		int received = qemu_fill_buffer(f);
 
-        if (received <= 0) {
-            break;
-        }
+		if (received <= 0) {
+			break;
+		}
 
-        index = f->buf_index + offset;
-        pending = f->buf_size - index;
-    }
+		index = f->buf_index + offset;
+		pending = f->buf_size - index;
+	}
 
-    if (pending <= 0) {
-        return 0;
-    }
-    if (size > pending) {
-        size = pending;
-    }
+	if (pending <= 0) {
+		return 0;
+	}
+	if (size > pending) {
+		size = pending;
+	}
 
-    *buf = f->buf + index;
-    return size;
+	*buf = f->buf + index;
+	return size;
 }
 
 /*
@@ -593,24 +595,24 @@ size_t coroutine_mixed_fn qemu_peek_buffer(QEMUFile *f, uint8_t **buf, size_t si
  */
 size_t coroutine_mixed_fn qemu_get_buffer(QEMUFile *f, uint8_t *buf, size_t size)
 {
-    size_t pending = size;
-    size_t done = 0;
+	size_t pending = size;
+	size_t done = 0;
 
-    while (pending > 0) {
-        size_t res;
-        uint8_t *src;
+	while (pending > 0) {
+		size_t res;
+		uint8_t *src;
 
-        res = qemu_peek_buffer(f, &src, MIN(pending, IO_BUF_SIZE), 0);
-        if (res == 0) {
-            return done;
-        }
-        memcpy(buf, src, res);
-        qemu_file_skip(f, res);
-        buf += res;
-        pending -= res;
-        done += res;
-    }
-    return done;
+		res = qemu_peek_buffer(f, &src, MIN(pending, IO_BUF_SIZE), 0);
+		if (res == 0) {
+			return done;
+		}
+		memcpy(buf, src, res);
+		qemu_file_skip(f, res);
+		buf += res;
+		pending -= res;
+		done += res;
+	}
+	return done;
 }
 
 /*
@@ -634,20 +636,20 @@ size_t coroutine_mixed_fn qemu_get_buffer(QEMUFile *f, uint8_t *buf, size_t size
  */
 size_t coroutine_mixed_fn qemu_get_buffer_in_place(QEMUFile *f, uint8_t **buf, size_t size)
 {
-    if (size < IO_BUF_SIZE) {
-        size_t res;
-        uint8_t *src = NULL;
+	if (size < IO_BUF_SIZE) {
+		size_t res;
+		uint8_t *src = NULL;
 
-        res = qemu_peek_buffer(f, &src, size, 0);
+		res = qemu_peek_buffer(f, &src, size, 0);
 
-        if (res == size) {
-            qemu_file_skip(f, res);
-            *buf = src;
-            return res;
-        }
-    }
+		if (res == size) {
+			qemu_file_skip(f, res);
+			*buf = src;
+			return res;
+		}
+	}
 
-    return qemu_get_buffer(f, *buf, size);
+	return qemu_get_buffer(f, *buf, size);
 }
 
 /*
@@ -656,116 +658,116 @@ size_t coroutine_mixed_fn qemu_get_buffer_in_place(QEMUFile *f, uint8_t **buf, s
  */
 int coroutine_mixed_fn qemu_peek_byte(QEMUFile *f, int offset)
 {
-    int index = f->buf_index + offset;
+	int index = f->buf_index + offset;
 
-    assert(!qemu_file_is_writable(f));
-    assert(offset < IO_BUF_SIZE);
+	assert(!qemu_file_is_writable(f));
+	assert(offset < IO_BUF_SIZE);
 
-    if (index >= f->buf_size) {
-        qemu_fill_buffer(f);
-        index = f->buf_index + offset;
-        if (index >= f->buf_size) {
-            return 0;
-        }
-    }
-    return f->buf[index];
+	if (index >= f->buf_size) {
+		qemu_fill_buffer(f);
+		index = f->buf_index + offset;
+		if (index >= f->buf_size) {
+			return 0;
+		}
+	}
+	return f->buf[index];
 }
 
 int coroutine_mixed_fn qemu_get_byte(QEMUFile *f)
 {
-    int result;
+	int result;
 
-    result = qemu_peek_byte(f, 0);
-    qemu_file_skip(f, 1);
-    return result;
+	result = qemu_peek_byte(f, 0);
+	qemu_file_skip(f, 1);
+	return result;
 }
 
 uint64_t qemu_file_transferred_noflush(QEMUFile *f)
 {
-    uint64_t ret = f->total_transferred;
-    int i;
+	uint64_t ret = f->total_transferred;
+	int i;
 
-    for (i = 0; i < f->iovcnt; i++) {
-        ret += f->iov[i].iov_len;
-    }
+	for (i = 0; i < f->iovcnt; i++) {
+		ret += f->iov[i].iov_len;
+	}
 
-    return ret;
+	return ret;
 }
 
 uint64_t qemu_file_transferred(QEMUFile *f)
 {
-    qemu_fflush(f);
-    return f->total_transferred;
+	qemu_fflush(f);
+	return f->total_transferred;
 }
 
 void qemu_put_be16(QEMUFile *f, unsigned int v)
 {
-    qemu_put_byte(f, v >> 8);
-    qemu_put_byte(f, v);
+	qemu_put_byte(f, v >> 8);
+	qemu_put_byte(f, v);
 }
 
 void qemu_put_be32(QEMUFile *f, unsigned int v)
 {
-    qemu_put_byte(f, v >> 24);
-    qemu_put_byte(f, v >> 16);
-    qemu_put_byte(f, v >> 8);
-    qemu_put_byte(f, v);
+	qemu_put_byte(f, v >> 24);
+	qemu_put_byte(f, v >> 16);
+	qemu_put_byte(f, v >> 8);
+	qemu_put_byte(f, v);
 }
 
 void qemu_put_be64(QEMUFile *f, uint64_t v)
 {
-    qemu_put_be32(f, v >> 32);
-    qemu_put_be32(f, v);
+	qemu_put_be32(f, v >> 32);
+	qemu_put_be32(f, v);
 }
 
 unsigned int qemu_get_be16(QEMUFile *f)
 {
-    unsigned int v;
-    v = qemu_get_byte(f) << 8;
-    v |= qemu_get_byte(f);
-    return v;
+	unsigned int v;
+	v = qemu_get_byte(f) << 8;
+	v |= qemu_get_byte(f);
+	return v;
 }
 
 unsigned int qemu_get_be32(QEMUFile *f)
 {
-    unsigned int v;
-    v = (unsigned int)qemu_get_byte(f) << 24;
-    v |= qemu_get_byte(f) << 16;
-    v |= qemu_get_byte(f) << 8;
-    v |= qemu_get_byte(f);
-    return v;
+	unsigned int v;
+	v = (unsigned int)qemu_get_byte(f) << 24;
+	v |= qemu_get_byte(f) << 16;
+	v |= qemu_get_byte(f) << 8;
+	v |= qemu_get_byte(f);
+	return v;
 }
 
 uint64_t qemu_get_be64(QEMUFile *f)
 {
-    uint64_t v;
-    v = (uint64_t)qemu_get_be32(f) << 32;
-    v |= qemu_get_be32(f);
-    return v;
+	uint64_t v;
+	v = (uint64_t)qemu_get_be32(f) << 32;
+	v |= qemu_get_be32(f);
+	return v;
 }
 
 /* return the size after compression, or negative value on error */
 static int qemu_compress_data(z_stream *stream, uint8_t *dest, size_t dest_len,
-                              const uint8_t *source, size_t source_len)
+		const uint8_t *source, size_t source_len)
 {
-    int err;
+	int err;
 
-    err = deflateReset(stream);
-    if (err != Z_OK) {
-        return -1;
-    }
+	err = deflateReset(stream);
+	if (err != Z_OK) {
+		return -1;
+	}
 
-    stream->avail_in = source_len;
-    stream->next_in = (uint8_t *)source;
-    stream->avail_out = dest_len;
-    stream->next_out = dest;
+	stream->avail_in = source_len;
+	stream->next_in = (uint8_t *)source;
+	stream->avail_out = dest_len;
+	stream->next_out = dest;
 
-    err = deflate(stream, Z_FINISH);
-    if (err != Z_STREAM_END) {
-        return -1;
-    }
+	err = deflate(stream, Z_FINISH);
+	if (err != Z_STREAM_END) {
+		return -1;
+	}
 
-    return stream->next_out - dest;
+	return stream->next_out - dest;
 }
 
 /* Compress size bytes of data start at p and store the compressed
@@ -775,23 +777,23 @@ static int qemu_compress_data(z_stream *stream, uint8_t *dest, size_t dest_len,
  * save the compressed data.
  */
 ssize_t qemu_put_compression_data(QEMUFile *f, z_stream *stream,
-                                  const uint8_t *p, size_t size)
+		const uint8_t *p, size_t size)
 {
-    ssize_t blen = IO_BUF_SIZE - f->buf_index - sizeof(int32_t);
+	ssize_t blen = IO_BUF_SIZE - f->buf_index - sizeof(int32_t);
 
-    if (blen < compressBound(size)) {
-        return -1;
-    }
+	if (blen < compressBound(size)) {
+		return -1;
+	}
 
-    blen = qemu_compress_data(stream, f->buf + f->buf_index + sizeof(int32_t),
-                              blen, p, size);
-    if (blen < 0) {
-        return -1;
-    }
+	blen = qemu_compress_data(stream, f->buf + f->buf_index + sizeof(int32_t),
+			blen, p, size);
+	if (blen < 0) {
+		return -1;
+	}
 
-    qemu_put_be32(f, blen);
-    add_buf_to_iovec(f, blen);
-    return blen + sizeof(int32_t);
+	qemu_put_be32(f, blen);
+	add_buf_to_iovec(f, blen);
+	return blen + sizeof(int32_t);
 }
 
 /* Put the data in the buffer of f_src to the buffer of f_des, and
@@ -800,15 +802,15 @@ ssize_t qemu_put_compression_data(QEMUFile *f, z_stream *stream,
 
 int qemu_put_qemu_file(QEMUFile *f_des, QEMUFile *f_src)
 {
-    int len = 0;
+	int len = 0;
 
-    if (f_src->buf_index > 0) {
-        len = f_src->buf_index;
-        qemu_put_buffer(f_des, f_src->buf, f_src->buf_index);
-        f_src->buf_index = 0;
-        f_src->iovcnt = 0;
-    }
-    return len;
+	if (f_src->buf_index > 0) {
+		len = f_src->buf_index;
+		qemu_put_buffer(f_des, f_src->buf, f_src->buf_index);
+		f_src->buf_index = 0;
+		f_src->iovcnt = 0;
+	}
+	return len;
 }
 
 /*
@@ -817,9 +819,9 @@ int qemu_put_qemu_file(QEMUFile *f_des, QEMUFile *f_src)
 
 bool qemu_file_buffer_empty(QEMUFile *file)
 {
-    assert(qemu_file_is_writable(file));
+	assert(qemu_file_is_writable(file));
 
-    return !file->iovcnt;
+	return !file->iovcnt;
 }
 
 /*
@@ -831,12 +833,12 @@ bool qemu_file_buffer_empty(QEMUFile *file)
  */
 size_t coroutine_fn qemu_get_counted_string(QEMUFile *f, char buf[256])
 {
-    size_t len = qemu_get_byte(f);
-    size_t res = qemu_get_buffer(f, (uint8_t *)buf, len);
+	size_t len = qemu_get_byte(f);
+	size_t res = qemu_get_buffer(f, (uint8_t *)buf, len);
 
-    buf[res] = 0;
+	buf[res] = 0;
 
-    return res == len ? res : 0;
+	return res == len ? res : 0;
 }
 
 /*
@@ -845,11 +847,11 @@ size_t coroutine_fn qemu_get_counted_string(QEMUFile *f, char buf[256])
  */
 void qemu_put_counted_string(QEMUFile *f, const char *str)
 {
-    size_t len = strlen(str);
+	size_t len = strlen(str);
 
-    assert(len < 256);
-    qemu_put_byte(f, len);
-    qemu_put_buffer(f, (const uint8_t *)str, len);
+	assert(len < 256);
+	qemu_put_byte(f, len);
+	qemu_put_buffer(f, (const uint8_t *)str, len);
 }
 
 /*
@@ -860,7 +862,7 @@ void qemu_put_counted_string(QEMUFile *f, const char *str)
  */
 void qemu_file_set_blocking(QEMUFile *f, bool block)
 {
-    qio_channel_set_blocking(f->ioc, block, NULL);
+	qio_channel_set_blocking(f->ioc, block, NULL);
 }
 
 /*
@@ -873,7 +875,7 @@ void qemu_file_set_blocking(QEMUFile *f, bool block)
  */
 QIOChannel *qemu_file_get_ioc(QEMUFile *file)
 {
-    return file->ioc;
+	return file->ioc;
 }
 
 /*
@@ -881,31 +883,31 @@ QIOChannel *qemu_file_get_ioc(QEMUFile *file)
  */
 int qemu_file_get_to_fd(QEMUFile *f, int fd, size_t size)
 {
-    while (size) {
-        size_t pending = f->buf_size - f->buf_index;
-        ssize_t rc;
+	while (size) {
+		size_t pending = f->buf_size - f->buf_index;
+		ssize_t rc;
 
-        if (!pending) {
-            rc = qemu_fill_buffer(f);
-            if (rc < 0) {
-                return rc;
-            }
-            if (rc == 0) {
-                return -EIO;
-            }
-            continue;
-        }
+		if (!pending) {
+			rc = qemu_fill_buffer(f);
+			if (rc < 0) {
+				return rc;
+			}
+			if (rc == 0) {
+				return -EIO;
+			}
+			continue;
+		}
 
-        rc = write(fd, f->buf + f->buf_index, MIN(pending, size));
-        if (rc < 0) {
-            return -errno;
-        }
-        if (rc == 0) {
-            return -EIO;
-        }
-        f->buf_index += rc;
-        size -= rc;
-    }
+		rc = write(fd, f->buf + f->buf_index, MIN(pending, size));
+		if (rc < 0) {
+			return -errno;
+		}
+		if (rc == 0) {
+			return -EIO;
+		}
+		f->buf_index += rc;
+		size -= rc;
+	}
 
-    return 0;
+	return 0;
 }
