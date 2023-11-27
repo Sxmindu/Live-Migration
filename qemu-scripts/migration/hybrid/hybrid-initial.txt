@@ -1,0 +1,2 @@
+{"execute": "qmp_capabilities"}
+{"execute": "migrate-set-capabilities", "arguments": {"capabilities":[ { "capability": "postcopy-ram", "state": true}]}}

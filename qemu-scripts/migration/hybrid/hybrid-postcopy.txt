@@ -1,0 +1,2 @@
+{ "execute": "qmp_capabilities" }
+{ "execute": "migrate-start-postcopy"}

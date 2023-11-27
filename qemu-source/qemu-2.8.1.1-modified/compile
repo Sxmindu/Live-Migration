@@ -1,0 +1,4 @@
+#!/bin/bash
+#./configure --enable-debug --target-list=x86_64-softmmu
+make -j 8
+make install -j 8
