@@ -4,6 +4,7 @@
 
 - Source : `10.22.196.124`
 - Destination : `10.22.196.123`
+- VMs : `10.22.196.200 - 10.22.196.250`
 - Gateway : `10.22.196.254`
 - DNS : `10.22.254.10`
 
@@ -19,7 +20,7 @@
     ip addr add <host_ip>/24 dev br0
     ip route add default via 10.22.196.254 dev br0
     ```
-    - This is already setuped in both host machines, if the bridge in the machine is removed accidently use the above code to set it up again.
+    - This is already setuped in both host machines, if the bridge in a machine is removed accidently use the above code to set it up again.
 
 ## Network File System
 
