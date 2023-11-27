@@ -18,7 +18,7 @@
 
 ## Setting-up the Virtual Machine
 
-1. First create a new virtual hard disk drive for the VM
+1. First create a new virtual hard disk drive for the VM, with QEMU Copy-On-Write 2 disk allocation strategy
 
     ```bash
     qemu-img create -f qcow2 <image_name>.img 15G
