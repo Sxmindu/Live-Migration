@@ -51,13 +51,16 @@ echo $pid
 top -b -d 1 -n 60 -p "$pid" | grep --line-buffered 'sysbench' > /home/base/Desktop/cpu_usage.log
 EOF
 
-scp "base@10.22.196.200:/home/base/Desktop/cpu_usage.log" cpu_usage.log
+sudo scp "base@10.22.196.200:/home/base/Desktop/cpu_usage.log" cpu_usage.log
 
-if ($TYPE = "Pre"); then
+if [ "$TYPE" = "tcp"]
+then
 	bash ../migration/precopy/precopy-vm-migrate.sh
-else if ($TYPE = "Post"); then
+elif [ "$TYPE" = "pp" ]
+then
 	bash ../migration/postcopy/postcopy-vm-migrate.sh
-else if ($TYPE = "Hybrid"); then
+elif [ "$TYPE" = "tp" ]
+then
 	bash ../migration/hybrid/hybrid-precopy.sh
 	sleep 5
 	bash ../migration/hybrid/hybrid-postcopy.sh
@@ -65,7 +68,7 @@ fi
 
 bash migration-status.sh
 bash migration-status.sh
-bash migration-status.sh > output.log
+bash migration-status.sh >> output.log
 
 #killall qemu-system-x86_64
 # Optionally, you can also shut down the VM after execution

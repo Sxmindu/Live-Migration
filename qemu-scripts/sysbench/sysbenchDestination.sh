@@ -27,7 +27,8 @@ sudo qemu-system-x86_64 \
 
 sleep 2
 
-if ($POST = "true"); then
+if [ "$POST" = "true" ]
+then
 	bash ./migration/postcopy-dst-ram.sh
 fi
 

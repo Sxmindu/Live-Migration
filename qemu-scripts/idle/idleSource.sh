@@ -26,11 +26,14 @@ sudo qemu-system-x86_64 \
 
 sleep 60
 
-if ($TYPE = "Pre"); then
+if [ "$TYPE" = "tcp"]
+then
 	bash ../migration/precopy/precopy-vm-migrate.sh
-else if ($TYPE = "Post"); then
+elif [ "$TYPE" = "pp" ]
+then
 	bash ../migration/postcopy/postcopy-vm-migrate.sh
-else if ($TYPE = "Hybrid"); then
+elif [ "$TYPE" = "tp" ]
+then
 	bash ../migration/hybrid/hybrid-precopy.sh
 	sleep 5
 	bash ../migration/hybrid/hybrid-postcopy.sh
@@ -38,4 +41,4 @@ fi
 
 bash migration-status.sh
 bash migration-status.sh
-bash migration-status.sh > output.log
+bash migration-status.sh >> output.log
