@@ -18,7 +18,7 @@ fi
 echo "Source VM Started"
 
 sudo qemu-system-x86_64 \
-        -name vm1 \
+        -name base \
         -smp 1 \
         -boot c \
         -m $RAM \
@@ -33,7 +33,7 @@ sudo qemu-system-x86_64 \
 sleep 2
 
 # Execute the C program inside the VM using SSH
-ssh vm1@10.22.196.200 << 'EOF'
+ssh base@10.22.196.200 << 'EOF'
 cd Desktop
 bash executeSysbench.sh &
 EOF
@@ -44,14 +44,14 @@ echo "Program executes within VM"
 sleep 10
 
 # Take the CPU Usage %
-ssh vm1@10.22.196.200 << 'EOF'
+ssh base@10.22.196.200 << 'EOF'
 pid=$(pgrep sysbench)
 echo "This is the pid"
 echo $pid
-top -b -d 1 -n 60 -p "$pid" | grep --line-buffered 'sysbench' > /home/vm1/Desktop/cpu_usage.log
+top -b -d 1 -n 60 -p "$pid" | grep --line-buffered 'sysbench' > /home/base/Desktop/cpu_usage.log
 EOF
 
-scp "vm1@10.22.196.200:/home/vm1/Desktop/cpu_usage.log" cpu_usage.log
+scp "base@10.22.196.200:/home/base/Desktop/cpu_usage.log" cpu_usage.log
 
 if ($TYPE = "Pre"); then
 	bash ../migration/precopy/precopy-vm-migrate.sh

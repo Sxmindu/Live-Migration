@@ -14,7 +14,7 @@ fi
 echo "Source VM Started"
 
 sudo qemu-system-x86_64 \
-	-name vm1 \
+	-name base \
 	-smp 1 \
 	-boot c \
 	-m 8192 \
