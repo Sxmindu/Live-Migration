@@ -3,6 +3,7 @@
 VM="$1"
 TAP="$2"
 RAM="$3"
+TYPE="$4"
 
 # Checking and Creating Tap Device
 if test -d /sys/class/net/$TAP; then
@@ -26,7 +27,7 @@ sudo qemu-system-x86_64 \
         -net nic,model=virtio,macaddr=52:54:00:12:34:11 \
         -net tap,ifname=$TAP,script=no,downscript=no \
         -cpu host --enable-kvm \
-        -qmp "unix:/media/qmp1,server,nowait"
+        -qmp "unix:/media/qmp1,server,nowait" &
 
 # Wait for the VM to boot (adjust sleep time as needed)
 sleep 2
@@ -52,11 +53,19 @@ EOF
 
 scp "vm1@10.22.196.200:/home/vm1/Desktop/cpu_usage.log" cpu_usage.log
 
-bash ../migration/hybrid/hybrid-precopy.sh
-bash ../migration/hybrid/hybrid-postcopy.sh
+if ($TYPE = "Pre"); then
+	bash ../migration/precopy/precopy-vm-migrate.sh
+else if ($TYPE = "Post"); then
+	bash ../migration/postcopy/postcopy-vm-migrate.sh
+else if ($TYPE = "Hybrid"); then
+	bash ../migration/hybrid/hybrid-precopy.sh
+	sleep 5
+	bash ../migration/hybrid/hybrid-postcopy.sh
+fi
+
 bash migration-status.sh
 bash migration-status.sh
-bash migration-status.sh > output-hybrid.log
+bash migration-status.sh > output.log
 
 #killall qemu-system-x86_64
 # Optionally, you can also shut down the VM after execution
