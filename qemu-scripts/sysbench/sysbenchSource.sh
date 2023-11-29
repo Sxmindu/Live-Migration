@@ -55,20 +55,22 @@ sudo scp "base@10.22.196.200:/home/base/Desktop/cpu_usage.log" cpu_usage.log
 
 if [ "$TYPE" = "tcp"]
 then
-	bash ../migration/precopy/precopy-vm-migrate.sh
+	cat ../migration/precopy/precopy-vm-migrate.txt | sudo socat - /media/qmp1
 elif [ "$TYPE" = "pp" ]
 then
-	bash ../migration/postcopy/postcopy-vm-migrate.sh
+	cat ../migration/postcopy/postcopy-initial.txt | sudo socat - /media/qmp1
+        cat ../migration/postcopy/postcopy-vm-migrate.txt | sudo socat - /media/qmp1
 elif [ "$TYPE" = "tp" ]
 then
-	bash ../migration/hybrid/hybrid-precopy.sh
+        cat ../migration/hybrid/hybrid-initial.txt | sudo socat - /media/qmp1
+        cat ../migration/hybrid/hybrid-precopy.txt | sudo socat - /media/qmp1
 	sleep 5
-	bash ../migration/hybrid/hybrid-postcopy.sh
+        cat ../migration/hybrid/hybrid-postcopy.txt | sudo socat - /media/qmp1
 fi
 
-bash migration-status.sh
-bash migration-status.sh
-bash migration-status.sh >> output.log
+cat ../migration/migration-status.txt | sudo socat - /media/qmp1
+cat ../migration/migration-status.txt | sudo socat - /media/qmp1
+cat ../migration/migration-status.txt | sudo socat - /media/qmp1 >> output.log
 
 #killall qemu-system-x86_64
 # Optionally, you can also shut down the VM after execution
