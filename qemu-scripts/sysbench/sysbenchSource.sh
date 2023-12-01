@@ -23,7 +23,7 @@ sudo qemu-system-x86_64 \
         -boot c \
         -m $RAM \
         -vnc :1 \
-        -drive file=../vm-images/$VM.img,if=virtio \
+        -drive file=../../vm-images/$VM.img,if=virtio \
         -net nic,model=virtio,macaddr=52:54:00:12:34:11 \
         -net tap,ifname=$TAP,script=no,downscript=no \
         -cpu host --enable-kvm \
