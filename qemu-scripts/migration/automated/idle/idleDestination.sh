@@ -18,7 +18,7 @@ sudo qemu-system-x86_64 \
 	-boot c \
 	-m 8192 \
 	-vnc :1 \
-	-drive file=../../vm-images/$VM.img,if=virtio \
+	-drive file=/var/lib/libvirt/images/Live-Migration/vm-images/$VM.img,if=virtio \
 	-net nic,model=virtio,macaddr=52:54:00:12:34:11 \
 	-net tap,ifname=$TAP,script=no,downscript=no \
 	-cpu host --enable-kvm \
@@ -29,7 +29,7 @@ sleep 2
 
 if [ "$POST" = "true" ]
 then
-	bash ./migration/postcopy-dst-ram.sh
+	bash ../../postcopy-dst-ram.sh
 fi
 
 echo "Destination Ready to Recieve VM"

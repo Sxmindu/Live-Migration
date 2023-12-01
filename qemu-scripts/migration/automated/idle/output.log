@@ -1,0 +1,3 @@
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}}
+{"return": {}}
+{"return": {"status": "completed", "setup-time": 43, "downtime": 71, "total-time": 6231, "ram": {"total": 8607571968, "postcopy-requests": 343, "dirty-sync-count": 2, "multifd-bytes": 0, "pages-per-second": 705901, "downtime-bytes": 0, "page-size": 4096, "remaining": 0, "postcopy-bytes": 417575263, "mbps": 703.94248739495799, "transferred": 544370661, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 126795398, "duplicate": 1985336, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 525475840, "normal": 128290}}}

@@ -18,27 +18,31 @@ sudo qemu-system-x86_64 \
 	-boot c \
 	-m 8192 \
 	-vnc :1 \
-	-drive file=../../vm-images/$VM.img,if=virtio \
+	-drive file=/var/lib/libvirt/images/Live-Migration/vm-images/$VM.img,if=virtio \
 	-net nic,model=virtio,macaddr=52:54:00:12:34:11 \
 	-net tap,ifname=$TAP,script=no,downscript=no \
 	-cpu host --enable-kvm \
 	-qmp "unix:/media/qmp1,server,nowait" &
 
-sleep 60
+sleep 10
 
-if [ "$TYPE" = "tcp"]
+if [ "$TYPE" = "tcp" ]
 then
-	bash ../migration/precopy/precopy-vm-migrate.sh
+	bash ../../precopy/precopy-vm-migrate.sh
 elif [ "$TYPE" = "pp" ]
 then
-	bash ../migration/postcopy/postcopy-vm-migrate.sh
+	bash ../../postcopy/postcopy-vm-migrate.sh
 elif [ "$TYPE" = "tp" ]
 then
-	bash ../migration/hybrid/hybrid-precopy.sh
-	sleep 5
-	bash ../migration/hybrid/hybrid-postcopy.sh
+	bash ../../hybrid/hybrid-precopy.sh 
+	bash ../../hybrid/hybrid-postcopy.sh
 fi
 
-bash migration-status.sh
-bash migration-status.sh
-bash migration-status.sh >> output.log
+get_migration_details() {
+	sleep 20
+	bash ../../migration-status.sh
+	bash ../../migration-status.sh > output.log
+}
+
+get_migration_details &
+

@@ -1,4 +1,5 @@
 #!/bin/bash
 
 #Initial 
-cat ./postcopy/postcopy-initial.txt | sudo socat - /media/qmp1
+cat "$(dirname "$0")/postcopy/postcopy-initial.txt" | sudo socat - /media/qmp1
+
