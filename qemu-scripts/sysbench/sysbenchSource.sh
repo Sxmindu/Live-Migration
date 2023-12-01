@@ -53,7 +53,7 @@ EOF
 
 sudo scp "base@10.22.196.200:/home/base/Desktop/cpu_usage.log" cpu_usage.log
 
-if [ "$TYPE" = "tcp"]
+if [ "$TYPE" = "tcp" ]
 then
 	cat ../migration/precopy/precopy-vm-migrate.txt | sudo socat - /media/qmp1
 elif [ "$TYPE" = "pp" ]
