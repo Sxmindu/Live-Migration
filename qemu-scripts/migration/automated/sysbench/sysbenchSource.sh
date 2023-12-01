@@ -53,6 +53,7 @@ then
 elif [ "$TYPE" = "tp" ]
 then
 	bash ../../hybrid/hybrid-precopy.sh 
+        sleep 1.5
 	bash ../../hybrid/hybrid-postcopy.sh
 fi
 
