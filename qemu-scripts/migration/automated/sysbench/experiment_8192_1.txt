@@ -1,5 +1,0 @@
->>> RAM: 8192
-
----------------- Precopy Experiments ----------------
-
-Experiment No: {1..10}
