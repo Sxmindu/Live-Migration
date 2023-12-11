@@ -31,14 +31,12 @@ sudo qemu-system-x86_64 \
         -qmp "unix:/media/qmp1,server,nowait" &
 
 # Wait for the VM to boot (adjust sleep time as needed)
-sleep 2
+sleep 10
 
 # Execute the C program inside the VM using SSH
-ssh base@10.22.196.200 << 'EOF'
-cd Desktop
-bash executeSysbench.sh &
-EOF
+expect startSysbench.sh
 
+echo ""
 echo "Program executes within VM"
 
 # Wait 10 sec
@@ -52,7 +50,8 @@ then
 	bash ../../postcopy/postcopy-vm-migrate.sh
 elif [ "$TYPE" = "tp" ]
 then
-	bash ../../hybrid/hybrid-precopy.sh 
+	bash ../../hybrid/hybrid-precopy.sh
+	sleep 0.5	
 	bash ../../hybrid/hybrid-postcopy.sh
 fi
 
@@ -60,6 +59,7 @@ get_migration_details() {
 	sleep 20
 	bash ../../migration-status.sh
 	bash ../../migration-status.sh > output.log
+	kill $(pgrep qemu)
 }
 
 get_migration_details &
