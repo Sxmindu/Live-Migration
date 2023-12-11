@@ -50,8 +50,13 @@ then
 	bash ../../postcopy/postcopy-vm-migrate.sh
 elif [ "$TYPE" = "tp" ]
 then
+<<<<<<< HEAD
 	bash ../../hybrid/hybrid-precopy.sh
 	sleep 0.5	
+=======
+	bash ../../hybrid/hybrid-precopy.sh 
+        sleep 0.5
+>>>>>>> f2992541cdca41732c0bbb3764f7d4af3087a96c
 	bash ../../hybrid/hybrid-postcopy.sh
 fi
 
