@@ -1,0 +1,76 @@
+>>> RAM: 4096
+
+---------------- Precopy Experiments ----------------
+
+Experiment No: 1
+Experiment No: 2
+Experiment No: 3
+Experiment No: 4
+Experiment No: 5
+Experiment No: 6
+Experiment No: 7
+Experiment No: 8
+Experiment No: 9
+Experiment No: 10
+Experiment No: 11
+Experiment No: 12
+Experiment No: 13
+Experiment No: 14
+Experiment No: 15
+Experiment No: 16
+Experiment No: 17
+Experiment No: 18
+Experiment No: 19
+Experiment No: 20
+------------------------------------------------------
+
+---------------- Postcopy Experiments ----------------
+
+Experiment No: 1
+Experiment No: 2
+Experiment No: 3
+Experiment No: 4
+Experiment No: 5
+Experiment No: 6
+Experiment No: 7
+Experiment No: 8
+Experiment No: 9
+Experiment No: 10
+Experiment No: 11
+Experiment No: 12
+Experiment No: 13
+Experiment No: 14
+Experiment No: 15
+Experiment No: 16
+Experiment No: 17
+Experiment No: 18
+Experiment No: 19
+Experiment No: 20
+------------------------------------------------------
+
+---------------- Hybrid Experiments ----------------
+
+Experiment No: 1
+Experiment No: 2
+Experiment No: 3
+Experiment No: 4
+Experiment No: 5
+Experiment No: 6
+Experiment No: 7
+Experiment No: 8
+Experiment No: 9
+Experiment No: 10
+Experiment No: 11
+Experiment No: 12
+Experiment No: 13
+Experiment No: 14
+Experiment No: 15
+Experiment No: 16
+Experiment No: 17
+Experiment No: 18
+Experiment No: 19
+Experiment No: 20
+------------------------------------------------------
+
+-----------------------------------
+
