@@ -1,0 +1,21 @@
+Disk: sysbench_disk1
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 23, "downtime": 24, "total-time": 7819, "ram": {"total": 5386346496, "postcopy-requests": 422, "dirty-sync-count": 2, "multifd-bytes": 0, "pages-per-second": 727862, "downtime-bytes": 0, "page-size": 4096, "remaining": 0, "postcopy-bytes": 816969493, "mbps": 874.51254079014882, "transferred": 852101026, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 35131533, "duplicate": 1109846, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 840470528, "normal": 205193}}}
+
+Disk: sysbench_disk1
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 23, "downtime": 58, "total-time": 7809, "ram": {"total": 5386346496, "postcopy-requests": 363, "dirty-sync-count": 2, "multifd-bytes": 0, "pages-per-second": 112960, "downtime-bytes": 0, "page-size": 4096, "remaining": 0, "postcopy-bytes": 793876045, "mbps": 876.465613151811, "transferred": 852908045, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 59032000, "duplicate": 1109688, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 841277440, "normal": 205390}}}
+
+Disk: sysbench_disk2
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 23, "downtime": 22, "total-time": 7940, "ram": {"total": 5386346496, "postcopy-requests": 449, "dirty-sync-count": 2, "multifd-bytes": 0, "pages-per-second": 801274, "downtime-bytes": 0, "page-size": 4096, "remaining": 0, "postcopy-bytes": 826178372, "mbps": 867.0019108248074, "transferred": 857895377, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 31717005, "duplicate": 1108426, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 846266368, "normal": 206608}}}
+
