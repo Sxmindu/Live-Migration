@@ -1,0 +1,496 @@
+>>> RAM: 7168
+
+---------------- Precopy Experiments ----------------
+
+Experiment No: 1
+Disk: sysbench_disk4
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 32, "downtime": 842, "total-time": 9789, "ram": {"total": 7533830144, "postcopy-requests": 0, "dirty-sync-count": 4, "multifd-bytes": 0, "pages-per-second": 64785, "downtime-bytes": 33117786, "page-size": 4096, "remaining": 0, "postcopy-bytes": 0, "mbps": 726.67985487342412, "transferred": 886050981, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 852933195, "duplicate": 1638407, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 869605376, "normal": 212306}}}
+
+Experiment No: 2
+Disk: sysbench_disk4
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 31, "downtime": 202, "total-time": 9621, "ram": {"total": 7533830144, "postcopy-requests": 0, "dirty-sync-count": 4, "multifd-bytes": 0, "pages-per-second": 63570, "downtime-bytes": 21231603, "page-size": 4096, "remaining": 0, "postcopy-bytes": 0, "mbps": 765.84194285714284, "transferred": 917827012, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 896595409, "duplicate": 1625038, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 901439488, "normal": 220078}}}
+
+Experiment No: 3
+Disk: sysbench_disk4
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 31, "downtime": 236, "total-time": 9819, "ram": {"total": 7533830144, "postcopy-requests": 0, "dirty-sync-count": 5, "multifd-bytes": 0, "pages-per-second": 29469, "downtime-bytes": 25532775, "page-size": 4096, "remaining": 0, "postcopy-bytes": 0, "mbps": 768.97087454025348, "transferred": 940610078, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 915077303, "duplicate": 1625232, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 924176384, "normal": 225629}}}
+
+Experiment No: 4
+Disk: sysbench_disk4
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 31, "downtime": 283, "total-time": 9685, "ram": {"total": 7533830144, "postcopy-requests": 0, "dirty-sync-count": 4, "multifd-bytes": 0, "pages-per-second": 60649, "downtime-bytes": 32124627, "page-size": 4096, "remaining": 0, "postcopy-bytes": 0, "mbps": 775.03801201574481, "transferred": 935051124, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 902926497, "duplicate": 1626366, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 918618112, "normal": 224272}}}
+
+Experiment No: 5
+Disk: sysbench_disk4
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 32, "downtime": 558, "total-time": 10125, "ram": {"total": 7533830144, "postcopy-requests": 0, "dirty-sync-count": 4, "multifd-bytes": 0, "pages-per-second": 62833, "downtime-bytes": 30889944, "page-size": 4096, "remaining": 0, "postcopy-bytes": 0, "mbps": 741.32864519964335, "transferred": 935052935, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 904162991, "duplicate": 1626105, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 918622208, "normal": 224273}}}
+
+Experiment No: 6
+Disk: sysbench_disk4
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 30, "downtime": 265, "total-time": 9734, "ram": {"total": 7533830144, "postcopy-requests": 0, "dirty-sync-count": 4, "multifd-bytes": 0, "pages-per-second": 29504, "downtime-bytes": 29847753, "page-size": 4096, "remaining": 0, "postcopy-bytes": 0, "mbps": 771.78586727122831, "transferred": 935950240, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 906102487, "duplicate": 1625946, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 919519232, "normal": 224492}}}
+
+Experiment No: 7
+Disk: sysbench_disk4
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 31, "downtime": 258, "total-time": 9700, "ram": {"total": 7533830144, "postcopy-requests": 0, "dirty-sync-count": 4, "multifd-bytes": 0, "pages-per-second": 29055, "downtime-bytes": 29286027, "page-size": 4096, "remaining": 0, "postcopy-bytes": 0, "mbps": 773.70933664287929, "transferred": 934898660, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 905612633, "duplicate": 1626294, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 918466560, "normal": 224235}}}
+
+Experiment No: 8
+Disk: sysbench_disk4
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 31, "downtime": 258, "total-time": 9706, "ram": {"total": 7533830144, "postcopy-requests": 0, "dirty-sync-count": 4, "multifd-bytes": 0, "pages-per-second": 58920, "downtime-bytes": 28747179, "page-size": 4096, "remaining": 0, "postcopy-bytes": 0, "mbps": 774.10184268733849, "transferred": 935953409, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 907206230, "duplicate": 1626299, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 919519232, "normal": 224492}}}
+
+Experiment No: 9
+Disk: sysbench_disk4
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 31, "downtime": 278, "total-time": 9703, "ram": {"total": 7533830144, "postcopy-requests": 0, "dirty-sync-count": 4, "multifd-bytes": 0, "pages-per-second": 29603, "downtime-bytes": 31340349, "page-size": 4096, "remaining": 0, "postcopy-bytes": 0, "mbps": 777.33455086848642, "transferred": 939571685, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 908231336, "duplicate": 1625223, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 923140096, "normal": 225376}}}
+
+Experiment No: 10
+Disk: sysbench_disk4
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 31, "downtime": 308, "total-time": 9725, "ram": {"total": 7533830144, "postcopy-requests": 0, "dirty-sync-count": 4, "multifd-bytes": 0, "pages-per-second": 62224, "downtime-bytes": 34204896, "page-size": 4096, "remaining": 0, "postcopy-bytes": 0, "mbps": 773.04012378791015, "transferred": 936505613, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 902300717, "duplicate": 1625639, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 920076288, "normal": 224628}}}
+
+Experiment No: 11
+Disk: sysbench_disk4
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 31, "downtime": 279, "total-time": 9701, "ram": {"total": 7533830144, "postcopy-requests": 0, "dirty-sync-count": 4, "multifd-bytes": 0, "pages-per-second": 59908, "downtime-bytes": 31131441, "page-size": 4096, "remaining": 0, "postcopy-bytes": 0, "mbps": 774.46918634953465, "transferred": 935913852, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 904782411, "duplicate": 1626006, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 919482368, "normal": 224483}}}
+
+Experiment No: 12
+Disk: sysbench_disk4
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 30, "downtime": 309, "total-time": 9743, "ram": {"total": 7533830144, "postcopy-requests": 0, "dirty-sync-count": 4, "multifd-bytes": 0, "pages-per-second": 61648, "downtime-bytes": 29043234, "page-size": 4096, "remaining": 0, "postcopy-bytes": 0, "mbps": 773.77939915577065, "transferred": 939239156, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 910195922, "duplicate": 1625670, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 922804224, "normal": 225294}}}
+
+Experiment No: 13
+Disk: sysbench_disk4
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 39, "downtime": 246, "total-time": 9702, "ram": {"total": 7533830144, "postcopy-requests": 0, "dirty-sync-count": 4, "multifd-bytes": 0, "pages-per-second": 61626, "downtime-bytes": 27558171, "page-size": 4096, "remaining": 0, "postcopy-bytes": 0, "mbps": 776.06192362620311, "transferred": 937160019, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 909601848, "duplicate": 1625845, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 920727552, "normal": 224787}}}
+
+Experiment No: 14
+Disk: sysbench_disk4
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 32, "downtime": 272, "total-time": 9729, "ram": {"total": 7533830144, "postcopy-requests": 0, "dirty-sync-count": 4, "multifd-bytes": 0, "pages-per-second": 29109, "downtime-bytes": 30582378, "page-size": 4096, "remaining": 0, "postcopy-bytes": 0, "mbps": 773.7299560688873, "transferred": 937631656, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 907049278, "duplicate": 1626266, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 921194496, "normal": 224901}}}
+
+Experiment No: 15
+Disk: sysbench_disk4
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 31, "downtime": 287, "total-time": 9720, "ram": {"total": 7533830144, "postcopy-requests": 0, "dirty-sync-count": 4, "multifd-bytes": 0, "pages-per-second": 60558, "downtime-bytes": 32658381, "page-size": 4096, "remaining": 0, "postcopy-bytes": 0, "mbps": 771.84669625348329, "transferred": 934576803, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 901918422, "duplicate": 1626557, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 918142976, "normal": 224156}}}
+
+Experiment No: 16
+Disk: sysbench_disk4
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 31, "downtime": 253, "total-time": 9700, "ram": {"total": 7533830144, "postcopy-requests": 0, "dirty-sync-count": 5, "multifd-bytes": 0, "pages-per-second": 62240, "downtime-bytes": 28344744, "page-size": 4096, "remaining": 0, "postcopy-bytes": 0, "mbps": 777.26093287827075, "transferred": 939190948, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 910846204, "duplicate": 1625326, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 922759168, "normal": 225283}}}
+
+Experiment No: 17
+Disk: sysbench_disk4
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 31, "downtime": 279, "total-time": 9730, "ram": {"total": 7533830144, "postcopy-requests": 0, "dirty-sync-count": 5, "multifd-bytes": 0, "pages-per-second": 64897, "downtime-bytes": 30945600, "page-size": 4096, "remaining": 0, "postcopy-bytes": 0, "mbps": 773.02491638313234, "transferred": 936970036, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 906024436, "duplicate": 1625710, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 920539136, "normal": 224741}}}
+
+Experiment No: 18
+Disk: sysbench_disk4
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 31, "downtime": 257, "total-time": 9697, "ram": {"total": 7533830144, "postcopy-requests": 0, "dirty-sync-count": 4, "multifd-bytes": 0, "pages-per-second": 29210, "downtime-bytes": 29153709, "page-size": 4096, "remaining": 0, "postcopy-bytes": 0, "mbps": 774.65142147734332, "transferred": 935746793, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 906593084, "duplicate": 1626139, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 919314432, "normal": 224442}}}
+
+Experiment No: 19
+Disk: sysbench_disk4
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 31, "downtime": 255, "total-time": 9676, "ram": {"total": 7533830144, "postcopy-requests": 0, "dirty-sync-count": 4, "multifd-bytes": 0, "pages-per-second": 62833, "downtime-bytes": 28865853, "page-size": 4096, "remaining": 0, "postcopy-bytes": 0, "mbps": 775.49421918092276, "transferred": 934729191, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 905863338, "duplicate": 1626161, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 918298624, "normal": 224194}}}
+
+Experiment No: 20
+Disk: sysbench_disk4
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 31, "downtime": 261, "total-time": 9891, "ram": {"total": 7533830144, "postcopy-requests": 0, "dirty-sync-count": 4, "multifd-bytes": 0, "pages-per-second": 29276, "downtime-bytes": 29175255, "page-size": 4096, "remaining": 0, "postcopy-bytes": 0, "mbps": 760.10883651115614, "transferred": 936608294, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 907433039, "duplicate": 1626096, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 920174592, "normal": 224652}}}
+
+------------------------------------------------------
+
+---------------- Postcopy Experiments ----------------
+
+Experiment No: 1
+Disk: sysbench_disk5
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 31, "downtime": 18, "total-time": 7825, "ram": {"total": 7533830144, "postcopy-requests": 375, "dirty-sync-count": 2, "multifd-bytes": 0, "pages-per-second": 0, "downtime-bytes": 0, "page-size": 4096, "remaining": 0, "postcopy-bytes": 837793986, "mbps": 860.05141698742625, "transferred": 837793986, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 0, "duplicate": 1638767, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 821440512, "normal": 200547}}}
+
+Experiment No: 2
+Disk: sysbench_disk5
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 38, "downtime": 94, "total-time": 8377, "ram": {"total": 7533830144, "postcopy-requests": 402, "dirty-sync-count": 2, "multifd-bytes": 0, "pages-per-second": 0, "downtime-bytes": 0, "page-size": 4096, "remaining": 0, "postcopy-bytes": 894476947, "mbps": 858.22113155054558, "transferred": 894476947, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 0, "duplicate": 1624925, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 878137344, "normal": 214389}}}
+
+Experiment No: 3
+Disk: sysbench_disk5
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 38, "downtime": 22, "total-time": 8060, "ram": {"total": 7533830144, "postcopy-requests": 457, "dirty-sync-count": 2, "multifd-bytes": 0, "pages-per-second": 0, "downtime-bytes": 0, "page-size": 4096, "remaining": 0, "postcopy-bytes": 892081372, "mbps": 889.74574021441038, "transferred": 892081372, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 0, "duplicate": 1625510, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 875741184, "normal": 213804}}}
+
+Experiment No: 4
+Disk: sysbench_disk5
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 31, "downtime": 17, "total-time": 8208, "ram": {"total": 7533830144, "postcopy-requests": 422, "dirty-sync-count": 2, "multifd-bytes": 0, "pages-per-second": 0, "downtime-bytes": 0, "page-size": 4096, "remaining": 0, "postcopy-bytes": 894431902, "mbps": 875.17971187477065, "transferred": 894431902, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 0, "duplicate": 1624936, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 878092288, "normal": 214378}}}
+
+Experiment No: 5
+Disk: sysbench_disk5
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 31, "downtime": 20, "total-time": 8240, "ram": {"total": 7533830144, "postcopy-requests": 516, "dirty-sync-count": 2, "multifd-bytes": 0, "pages-per-second": 0, "downtime-bytes": 0, "page-size": 4096, "remaining": 0, "postcopy-bytes": 894554781, "mbps": 871.88788695334392, "transferred": 894554781, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 0, "duplicate": 1624906, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 878215168, "normal": 214408}}}
+
+Experiment No: 6
+Disk: sysbench_disk5
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 30, "downtime": 23, "total-time": 7930, "ram": {"total": 7533830144, "postcopy-requests": 497, "dirty-sync-count": 2, "multifd-bytes": 0, "pages-per-second": 0, "downtime-bytes": 0, "page-size": 4096, "remaining": 0, "postcopy-bytes": 891065812, "mbps": 902.45771037974691, "transferred": 891065812, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 0, "duplicate": 1625758, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 874725376, "normal": 213556}}}
+
+Experiment No: 7
+Disk: sysbench_disk5
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 31, "downtime": 19, "total-time": 8255, "ram": {"total": 7533830144, "postcopy-requests": 466, "dirty-sync-count": 2, "multifd-bytes": 0, "pages-per-second": 0, "downtime-bytes": 0, "page-size": 4096, "remaining": 0, "postcopy-bytes": 891958522, "mbps": 867.77208268482491, "transferred": 891958522, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 0, "duplicate": 1625540, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 875618304, "normal": 213774}}}
+
+Experiment No: 8
+Disk: sysbench_disk5
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 31, "downtime": 17, "total-time": 8278, "ram": {"total": 7533830144, "postcopy-requests": 579, "dirty-sync-count": 2, "multifd-bytes": 0, "pages-per-second": 0, "downtime-bytes": 0, "page-size": 4096, "remaining": 0, "postcopy-bytes": 894665404, "mbps": 867.97773832908933, "transferred": 894665404, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 0, "duplicate": 1624879, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 878325760, "normal": 214435}}}
+
+Experiment No: 9
+Disk: sysbench_disk5
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 40, "downtime": 59, "total-time": 8383, "ram": {"total": 7533830144, "postcopy-requests": 575, "dirty-sync-count": 2, "multifd-bytes": 0, "pages-per-second": 0, "downtime-bytes": 0, "page-size": 4096, "remaining": 0, "postcopy-bytes": 891114952, "mbps": 854.5857643533501, "transferred": 891114952, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 0, "duplicate": 1625746, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 874774528, "normal": 213568}}}
+
+Experiment No: 10
+Disk: sysbench_disk5
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 31, "downtime": 20, "total-time": 8021, "ram": {"total": 7533830144, "postcopy-requests": 484, "dirty-sync-count": 2, "multifd-bytes": 0, "pages-per-second": 0, "downtime-bytes": 0, "page-size": 4096, "remaining": 0, "postcopy-bytes": 890472037, "mbps": 891.69781426783481, "transferred": 890472037, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 0, "duplicate": 1625903, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 874131456, "normal": 213411}}}
+
+Experiment No: 11
+Disk: sysbench_disk5
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 38, "downtime": 22, "total-time": 8282, "ram": {"total": 7533830144, "postcopy-requests": 458, "dirty-sync-count": 2, "multifd-bytes": 0, "pages-per-second": 0, "downtime-bytes": 0, "page-size": 4096, "remaining": 0, "postcopy-bytes": 894374601, "mbps": 868.01147598253272, "transferred": 894374601, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 0, "duplicate": 1624950, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 878034944, "normal": 214364}}}
+
+Experiment No: 12
+Disk: sysbench_disk5
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 31, "downtime": 25, "total-time": 8262, "ram": {"total": 7533830144, "postcopy-requests": 430, "dirty-sync-count": 2, "multifd-bytes": 0, "pages-per-second": 0, "downtime-bytes": 0, "page-size": 4096, "remaining": 0, "postcopy-bytes": 892884021, "mbps": 867.93364597254276, "transferred": 892884021, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 0, "duplicate": 1625314, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 876544000, "normal": 214000}}}
+
+Experiment No: 13
+Disk: sysbench_disk5
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 31, "downtime": 18, "total-time": 8350, "ram": {"total": 7533830144, "postcopy-requests": 430, "dirty-sync-count": 2, "multifd-bytes": 0, "pages-per-second": 0, "downtime-bytes": 0, "page-size": 4096, "remaining": 0, "postcopy-bytes": 894100236, "mbps": 859.92203005168892, "transferred": 894100236, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 0, "duplicate": 1625017, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 877760512, "normal": 214297}}}
+
+Experiment No: 14
+Disk: sysbench_disk5
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 30, "downtime": 18, "total-time": 8242, "ram": {"total": 7533830144, "postcopy-requests": 497, "dirty-sync-count": 2, "multifd-bytes": 0, "pages-per-second": 0, "downtime-bytes": 0, "page-size": 4096, "remaining": 0, "postcopy-bytes": 894272197, "mbps": 871.29407306380904, "transferred": 894272197, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 0, "duplicate": 1624975, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 877932544, "normal": 214339}}}
+
+Experiment No: 15
+Disk: sysbench_disk5
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 36, "downtime": 22, "total-time": 8437, "ram": {"total": 7533830144, "postcopy-requests": 542, "dirty-sync-count": 2, "multifd-bytes": 0, "pages-per-second": 0, "downtime-bytes": 0, "page-size": 4096, "remaining": 0, "postcopy-bytes": 894624396, "mbps": 852.02778431139154, "transferred": 894624396, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 0, "duplicate": 1624889, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 878284800, "normal": 214425}}}
+
+Experiment No: 16
+Disk: sysbench_disk5
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 31, "downtime": 20, "total-time": 8429, "ram": {"total": 7533830144, "postcopy-requests": 515, "dirty-sync-count": 2, "multifd-bytes": 0, "pages-per-second": 0, "downtime-bytes": 0, "page-size": 4096, "remaining": 0, "postcopy-bytes": 895095321, "mbps": 852.78069064062868, "transferred": 895095321, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 0, "duplicate": 1624774, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 878755840, "normal": 214540}}}
+
+Experiment No: 17
+Disk: sysbench_disk5
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 31, "downtime": 22, "total-time": 8224, "ram": {"total": 7533830144, "postcopy-requests": 447, "dirty-sync-count": 2, "multifd-bytes": 0, "pages-per-second": 0, "downtime-bytes": 0, "page-size": 4096, "remaining": 0, "postcopy-bytes": 894943777, "mbps": 873.97044110826312, "transferred": 894943777, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 0, "duplicate": 1624811, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 878604288, "normal": 214503}}}
+
+Experiment No: 18
+Disk: sysbench_disk5
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 31, "downtime": 21, "total-time": 8175, "ram": {"total": 7533830144, "postcopy-requests": 494, "dirty-sync-count": 2, "multifd-bytes": 0, "pages-per-second": 0, "downtime-bytes": 0, "page-size": 4096, "remaining": 0, "postcopy-bytes": 894006022, "mbps": 878.3076925343812, "transferred": 894006022, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 0, "duplicate": 1625040, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 877666304, "normal": 214274}}}
+
+Experiment No: 19
+Disk: sysbench_disk5
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 39, "downtime": 22, "total-time": 8446, "ram": {"total": 7533830144, "postcopy-requests": 438, "dirty-sync-count": 2, "multifd-bytes": 0, "pages-per-second": 0, "downtime-bytes": 0, "page-size": 4096, "remaining": 0, "postcopy-bytes": 891413887, "mbps": 848.36452860711313, "transferred": 891413887, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 0, "duplicate": 1625673, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 875073536, "normal": 213641}}}
+
+Experiment No: 20
+Disk: sysbench_disk5
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 38, "downtime": 21, "total-time": 8174, "ram": {"total": 7533830144, "postcopy-requests": 476, "dirty-sync-count": 2, "multifd-bytes": 0, "pages-per-second": 0, "downtime-bytes": 0, "page-size": 4096, "remaining": 0, "postcopy-bytes": 892560516, "mbps": 877.74993608652903, "transferred": 892560516, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 0, "duplicate": 1625393, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 876220416, "normal": 213921}}}
+
+------------------------------------------------------
+
+---------------- Hybrid Experiments ----------------
+
+Experiment No: 1
+Disk: sysbench_disk6
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 31, "downtime": 20, "total-time": 7916, "ram": {"total": 7533830144, "postcopy-requests": 555, "dirty-sync-count": 2, "multifd-bytes": 0, "pages-per-second": 831392, "downtime-bytes": 0, "page-size": 4096, "remaining": 0, "postcopy-bytes": 805666425, "mbps": 850.27991376030434, "transferred": 837945687, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 32279262, "duplicate": 1638741, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 821592064, "normal": 200584}}}
+
+Experiment No: 2
+Disk: sysbench_disk6
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 31, "downtime": 89, "total-time": 8519, "ram": {"total": 7533830144, "postcopy-requests": 362, "dirty-sync-count": 2, "multifd-bytes": 0, "pages-per-second": 744745, "downtime-bytes": 0, "page-size": 4096, "remaining": 0, "postcopy-bytes": 857674900, "mbps": 841.53891140433552, "transferred": 892761388, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 35086488, "duplicate": 1625352, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 876421120, "normal": 213970}}}
+
+Experiment No: 3
+Disk: sysbench_disk6
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 30, "downtime": 21, "total-time": 8373, "ram": {"total": 7533830144, "postcopy-requests": 440, "dirty-sync-count": 2, "multifd-bytes": 0, "pages-per-second": 784320, "downtime-bytes": 0, "page-size": 4096, "remaining": 0, "postcopy-bytes": 861276789, "mbps": 858.65449742298938, "transferred": 895357698, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 34080909, "duplicate": 1624729, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 879017984, "normal": 214604}}}
+
+Experiment No: 4
+Disk: sysbench_disk6
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 31, "downtime": 23, "total-time": 8444, "ram": {"total": 7533830144, "postcopy-requests": 506, "dirty-sync-count": 2, "multifd-bytes": 0, "pages-per-second": 855862, "downtime-bytes": 0, "page-size": 4096, "remaining": 0, "postcopy-bytes": 860344001, "mbps": 848.07930298347799, "transferred": 891749912, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 31405911, "duplicate": 1625601, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 875409408, "normal": 213723}}}
+
+Experiment No: 5
+Disk: sysbench_disk6
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 31, "downtime": 22, "total-time": 8347, "ram": {"total": 7533830144, "postcopy-requests": 529, "dirty-sync-count": 2, "multifd-bytes": 0, "pages-per-second": 748055, "downtime-bytes": 0, "page-size": 4096, "remaining": 0, "postcopy-bytes": 858879422, "mbps": 859.89006156806158, "transferred": 893744204, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 34864782, "duplicate": 1625117, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 877404160, "normal": 214210}}}
+
+Experiment No: 6
+Disk: sysbench_disk6
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 30, "downtime": 22, "total-time": 8492, "ram": {"total": 7533830144, "postcopy-requests": 456, "dirty-sync-count": 2, "multifd-bytes": 0, "pages-per-second": 790788, "downtime-bytes": 0, "page-size": 4096, "remaining": 0, "postcopy-bytes": 856219362, "mbps": 841.79010163082023, "transferred": 890292081, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 34072719, "duplicate": 1625959, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 873951232, "normal": 213367}}}
+
+Experiment No: 7
+Disk: sysbench_disk6
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 30, "downtime": 32, "total-time": 8498, "ram": {"total": 7533830144, "postcopy-requests": 383, "dirty-sync-count": 2, "multifd-bytes": 0, "pages-per-second": 857745, "downtime-bytes": 0, "page-size": 4096, "remaining": 0, "postcopy-bytes": 862273125, "mbps": 844.13001700519612, "transferred": 893400172, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 31127047, "duplicate": 1625201, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 877060096, "normal": 214126}}}
+
+Experiment No: 8
+Disk: sysbench_disk6
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 38, "downtime": 26, "total-time": 8533, "ram": {"total": 7533830144, "postcopy-requests": 540, "dirty-sync-count": 2, "multifd-bytes": 0, "pages-per-second": 847705, "downtime-bytes": 0, "page-size": 4096, "remaining": 0, "postcopy-bytes": 862671871, "mbps": 841.79804496762802, "transferred": 893772872, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 31101001, "duplicate": 1625108, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 877432832, "normal": 214217}}}
+
+Experiment No: 9
+Disk: sysbench_disk6
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 40, "downtime": 24, "total-time": 8372, "ram": {"total": 7533830144, "postcopy-requests": 406, "dirty-sync-count": 2, "multifd-bytes": 0, "pages-per-second": 844568, "downtime-bytes": 0, "page-size": 4096, "remaining": 0, "postcopy-bytes": 858841762, "mbps": 854.58596831493037, "transferred": 889939883, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 31098121, "duplicate": 1626046, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 873598976, "normal": 213281}}}
+
+Experiment No: 10
+Disk: sysbench_disk6
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 32, "downtime": 24, "total-time": 8474, "ram": {"total": 7533830144, "postcopy-requests": 426, "dirty-sync-count": 2, "multifd-bytes": 0, "pages-per-second": 828882, "downtime-bytes": 0, "page-size": 4096, "remaining": 0, "postcopy-bytes": 862062810, "mbps": 846.48540535418147, "transferred": 893142211, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 31079401, "duplicate": 1625265, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 876802048, "normal": 214063}}}
+
+Experiment No: 11
+Disk: sysbench_disk6
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 30, "downtime": 21, "total-time": 8433, "ram": {"total": 7533830144, "postcopy-requests": 435, "dirty-sync-count": 2, "multifd-bytes": 0, "pages-per-second": 853980, "downtime-bytes": 0, "page-size": 4096, "remaining": 0, "postcopy-bytes": 861958203, "mbps": 852.41014304415091, "transferred": 895238859, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 33280656, "duplicate": 1624753, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 878899200, "normal": 214575}}}
+
+Experiment No: 12
+Disk: sysbench_disk6
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 31, "downtime": 24, "total-time": 8431, "ram": {"total": 7533830144, "postcopy-requests": 489, "dirty-sync-count": 2, "multifd-bytes": 0, "pages-per-second": 855235, "downtime-bytes": 0, "page-size": 4096, "remaining": 0, "postcopy-bytes": 864209348, "mbps": 852.79262952380952, "transferred": 895320780, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 31111432, "duplicate": 1624733, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 878981120, "normal": 214595}}}
+
+Experiment No: 13
+Disk: sysbench_disk6
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 38, "downtime": 23, "total-time": 8262, "ram": {"total": 7533830144, "postcopy-requests": 528, "dirty-sync-count": 2, "multifd-bytes": 0, "pages-per-second": 850215, "downtime-bytes": 0, "page-size": 4096, "remaining": 0, "postcopy-bytes": 862942228, "mbps": 869.83213326848249, "transferred": 894075998, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 31133770, "duplicate": 1625035, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 877735936, "normal": 214291}}}
+
+Experiment No: 14
+Disk: sysbench_disk6
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 31, "downtime": 27, "total-time": 8442, "ram": {"total": 7533830144, "postcopy-requests": 449, "dirty-sync-count": 2, "multifd-bytes": 0, "pages-per-second": 769274, "downtime-bytes": 0, "page-size": 4096, "remaining": 0, "postcopy-bytes": 864458081, "mbps": 852.05504601117582, "transferred": 895717985, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 31259904, "duplicate": 1624634, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 879378432, "normal": 214692}}}
+
+Experiment No: 15
+Disk: sysbench_disk6
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 31, "downtime": 18, "total-time": 8344, "ram": {"total": 7533830144, "postcopy-requests": 602, "dirty-sync-count": 2, "multifd-bytes": 0, "pages-per-second": 832019, "downtime-bytes": 0, "page-size": 4096, "remaining": 0, "postcopy-bytes": 859674979, "mbps": 857.60332683748345, "transferred": 891045628, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 31370649, "duplicate": 1625776, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 874704896, "normal": 213551}}}
+
+Experiment No: 16
+Disk: sysbench_disk6
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 39, "downtime": 22, "total-time": 8367, "ram": {"total": 7533830144, "postcopy-requests": 447, "dirty-sync-count": 2, "multifd-bytes": 0, "pages-per-second": 846310, "downtime-bytes": 0, "page-size": 4096, "remaining": 0, "postcopy-bytes": 859641391, "mbps": 855.6966935638809, "transferred": 890668853, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 31027462, "duplicate": 1625865, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 874328064, "normal": 213459}}}
+
+Experiment No: 17
+Disk: sysbench_disk6
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 31, "downtime": 22, "total-time": 8273, "ram": {"total": 7533830144, "postcopy-requests": 417, "dirty-sync-count": 2, "multifd-bytes": 0, "pages-per-second": 781775, "downtime-bytes": 0, "page-size": 4096, "remaining": 0, "postcopy-bytes": 856424157, "mbps": 864.43864887163306, "transferred": 890476401, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 34052244, "duplicate": 1625919, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 874135552, "normal": 213412}}}
+
+Experiment No: 18
+Disk: sysbench_disk6
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 32, "downtime": 23, "total-time": 8311, "ram": {"total": 7533830144, "postcopy-requests": 423, "dirty-sync-count": 2, "multifd-bytes": 0, "pages-per-second": 848960, "downtime-bytes": 0, "page-size": 4096, "remaining": 0, "postcopy-bytes": 862161200, "mbps": 863.26605532069084, "transferred": 893260986, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 31099786, "duplicate": 1625235, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 876920832, "normal": 214092}}}
+
+Experiment No: 19
+Disk: sysbench_disk6
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 31, "downtime": 21, "total-time": 8431, "ram": {"total": 7533830144, "postcopy-requests": 493, "dirty-sync-count": 2, "multifd-bytes": 0, "pages-per-second": 793495, "downtime-bytes": 0, "page-size": 4096, "remaining": 0, "postcopy-bytes": 857935176, "mbps": 849.63359523809527, "transferred": 892003800, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 34068624, "duplicate": 1625542, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 875663360, "normal": 213785}}}
+
+Experiment No: 20
+Disk: sysbench_disk6
+Destination-Ready: 100
+start-sysbench: 100
+vm_stop: 100
+migration:
+{"QMP": {"version": {"qemu": {"micro": 2, "minor": 1, "major": 8}, "package": ""}, "capabilities": ["oob"]}} {"return": {}} {"return": {"status": "completed", "setup-time": 31, "downtime": 24, "total-time": 8508, "ram": {"total": 7533830144, "postcopy-requests": 443, "dirty-sync-count": 2, "multifd-bytes": 0, "pages-per-second": 847705, "downtime-bytes": 0, "page-size": 4096, "remaining": 0, "postcopy-bytes": 860967580, "mbps": 841.96630977940299, "transferred": 892056998, "dirty-sync-missed-zero-copy": 0, "precopy-bytes": 31089418, "duplicate": 1625529, "dirty-pages-rate": 0, "skipped": 0, "normal-bytes": 875716608, "normal": 213798}}}
+
+------------------------------------------------------
+
+-----------------------------------
+
