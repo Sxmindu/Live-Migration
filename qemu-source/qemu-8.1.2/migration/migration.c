@@ -2745,18 +2745,13 @@ static MigIterateState migration_iteration_run(MigrationState *s)
 
 	trace_migrate_pending_estimate(pending_size, must_precopy, can_postcopy);
 
-//	printf("Pending Size : %ld | Must Precopy : %ld | Can PostCopy : %ld\n", pending_size, must_precopy, can_postcopy);
-
 	if (must_precopy <= s->threshold_size) {
-//		printf("Pending Precopy Size less thatn Threshold Size\n");						
 		qemu_savevm_state_pending_exact(&must_precopy, &can_postcopy);
 		pending_size = must_precopy + can_postcopy;
 		trace_migrate_pending_exact(pending_size, must_precopy, can_postcopy);
-//		printf("Pending Size : %ld | Must Precopy : %ld | Can PostCopy : %ld\n", pending_size, must_precopy, can_postcopy);
 	}
 
 	if ((!pending_size || pending_size < s->threshold_size) && can_switchover) { 
-//		printf("Pending Size : %ld | Must Precopy : %ld | Can PostCopy : %ld\n", pending_size, must_precopy, can_postcopy);
 		trace_migration_thread_low_pending(pending_size);
 		migration_completion(s);	
 		return MIG_ITERATE_BREAK;

@@ -1573,7 +1573,10 @@ void qemu_savevm_state_pending_exact(uint64_t *must_precopy,
 	*must_precopy = 0;
 	*can_postcopy = 0;
 
+	int i = 0;
+
 	QTAILQ_FOREACH(se, &savevm_state.handlers, entry) {
+		print("%d",i++);
 		if (!se->ops || !se->ops->state_pending_exact) {
 			continue;
 		}
